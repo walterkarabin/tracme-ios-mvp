@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApiHost</key>
+	<string>$(API_HOST)</string>
+	<key>CFBundleIconName</key>
+	<string>icon-120</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.walterkarabin.tracme.auth</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.walterkarabin.tracme</string>
+			</array>
+		</dict>
+		<dict/>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_http._tcp</string>
+	</array>
+	<key>SignupURL</key>
+	<string>$(SIGNUP_URL)</string>
+</dict>
+</plist>

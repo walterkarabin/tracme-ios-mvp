@@ -1,0 +1,16 @@
+//
+//  Release.xcconfig
+//  ClientServerBasic
+//
+//  Created by Walter Karabin on 2026-01-23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+// Define a slash variable to prevent Xcode from treating // as a comment.
+SLASH = /
+API_HOST = https:$(SLASH)$(SLASH)tracme-cw-homelab.duckdns.org
+
+// Signup URL for Release builds
+SIGNUP_URL = https:$(SLASH)$(SLASH)tracme-client.duckdns.org/register?client=ios

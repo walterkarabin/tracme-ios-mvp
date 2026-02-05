@@ -1,0 +1,71 @@
+import Foundation
+
+class InvoiceService {
+  let authManager: AuthManager
+  let apiClient: APIClient
+  var errorMessage: String? = nil
+
+  init(authManager: AuthManager) {
+    self.authManager = authManager
+    self.apiClient = APIClient(authProvider: authManager)
+  }
+
+  // MARK: - Get Invoices
+  func getInvoices(projectId: String? = nil) async -> [Invoice] {
+    print("InvoiceService: Fetching invoices from API.")
+    var endpoint = AppEnvironment.apiHost.appendingPathComponent("/api/invoices")
+    if let projectId = projectId {
+      endpoint = endpoint.appendingPathComponent("?projectId=\(projectId)")
+    }
+
+    do {
+      let invoices: [Invoice] = try await apiClient.request(
+        endpoint: endpoint,
+        method: "GET",
+        responseType: [Invoice].self
+      )
+      return invoices
+    } catch {
+      errorMessage = "Error fetching invoices: \(error.localizedDescription)"
+      return []
+    }
+  }
+
+  // MARK: - Update Invoice
+  func updateInvoice(_ invoice: Invoice) async -> Invoice? {
+    print("InvoiceService: Updating invoice with ID \(invoice.id).")
+    let endpoint = AppEnvironment.apiHost.appendingPathComponent("/api/invoices/\(invoice.id)")
+    do {
+      let body = try JSONEncoder().encode(invoice)
+      let updatedInvoice: Invoice = try await apiClient.request(
+        endpoint: endpoint,
+        method: "PUT",
+        body: body,
+        responseType: Invoice.self
+      )
+      return updatedInvoice
+    } catch {
+      errorMessage = "Error updating invoice: \(error.localizedDescription)"
+      return nil
+    }
+  }
+    
+    func createInvoice(_ invoice: Invoice) async -> Invoice? {
+        print("InvoiceService: Creating invoice.")
+        let endpoint = AppEnvironment.apiHost.appendingPathComponent("/api/invoices")
+        do {
+            let body = try JSONEncoder().encode(invoice)
+            let createdInvoice: Invoice = try await apiClient.request(
+                endpoint: endpoint,
+                method: "POST",
+                body: body,
+                responseType: Invoice.self
+            )
+            return createdInvoice
+        }
+        catch {
+            errorMessage = "Error creating invoice: \(error.localizedDescription)"
+            return nil
+        }
+    }
+}

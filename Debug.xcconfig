@@ -1,0 +1,19 @@
+//
+//  Debug.xcconfig
+//  ClientServerBasic
+//
+//  Created by Walter Karabin on 2026-01-23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+// Define a slash variable to prevent Xcode from treating // as a comment.
+SLASH = /
+// API_HOST = https:$(SLASH)$(SLASH)tracme-cw-homelab.duckdns.org
+// API_HOST = http:$(SLASH)$(SLASH)192.168.1.234:5200
+API_HOST = http:$(SLASH)$(SLASH)localhost:5200
+
+// Signup URL for Debug builds
+SIGNUP_URL = http:$(SLASH)$(SLASH)localhost:5173/register?client=ios
+
