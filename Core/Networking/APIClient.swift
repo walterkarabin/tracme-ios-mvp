@@ -96,6 +96,7 @@ class APIClient {
 
   /// Upload raw data (e.g. image) to the given endpoint while including the access token.
   /// Returns the raw response data and HTTPURLResponse so the caller can examine status + body.
+  /// On 401, attempts token refresh and retries once.
   func upload(
     data: Data,
     endpoint: URL,
@@ -107,17 +108,30 @@ class APIClient {
     request.httpMethod = method
     request.httpBody = nil
     request.setValue(contentType, forHTTPHeaderField: "Content-Type")
-
     if let token = authProvider.accessToken {
       request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
     }
     for (k, v) in headers { request.setValue(v, forHTTPHeaderField: k) }
 
-    let (responseData, response) = try await URLSession.shared.upload(for: request, from: data)
-    guard let httpResponse = response as? HTTPURLResponse else {
+    var (responseData, response) = try await URLSession.shared.upload(for: request, from: data)
+    var httpResponse = response as? HTTPURLResponse
+
+    if httpResponse?.statusCode == 401 {
+      let refreshed = await authProvider.refreshAccessToken()
+      guard refreshed, let newToken = authProvider.accessToken else {
+        authProvider.removeAccessToken()
+        throw APIClientError.unauthorized
+      }
+      var retryRequest = request
+      retryRequest.setValue("Bearer \(newToken)", forHTTPHeaderField: "Authorization")
+      (responseData, response) = try await URLSession.shared.upload(for: retryRequest, from: data)
+      httpResponse = response as? HTTPURLResponse
+    }
+
+    guard let final = httpResponse else {
       throw APIClientError.serverError(statusCode: -1, message: "Invalid response")
     }
-    return (responseData, httpResponse)
+    return (responseData, final)
   }
 
   /// Upload a file using multipart/form-data with a single `file` field (or custom fieldName).
@@ -164,11 +178,25 @@ class APIClient {
       request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
     }
 
-    let (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
-    guard let httpResponse = response as? HTTPURLResponse else {
+    var (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
+    var httpResponse = response as? HTTPURLResponse
+
+    if httpResponse?.statusCode == 401 {
+      let refreshed = await authProvider.refreshAccessToken()
+      guard refreshed, let newToken = authProvider.accessToken else {
+        authProvider.removeAccessToken()
+        throw APIClientError.unauthorized
+      }
+      var retryRequest = request
+      retryRequest.setValue("Bearer \(newToken)", forHTTPHeaderField: "Authorization")
+      (responseData, response) = try await URLSession.shared.upload(for: retryRequest, from: body)
+      httpResponse = response as? HTTPURLResponse
+    }
+
+    guard let final = httpResponse else {
       throw APIClientError.serverError(statusCode: -1, message: "Invalid response")
     }
-    return (responseData, httpResponse)
+    return (responseData, final)
   }
 }
 
