@@ -1,6 +1,6 @@
 //
 //  AnalyticsView.swift
-//  ClientServerBasic
+//  tracme-alpha
 //
 //  View for visualizing invoice data with pie/bar charts and filters (vendor, project, creationDate).
 //
