@@ -1,6 +1,6 @@
-# MVP TracMe
+# tracme-alpha
 
-**mvp-tracme** is an iOS app (Xcode project **ClientServerBasic**) for capturing and tracking items—especially invoices—with optional OCR and backend sync.
+**tracme-alpha** is an iOS app (Xcode project **TracMeAlpha**) for capturing and tracking items—especially invoices—with optional OCR and backend sync.
 
 ## What it does
 
@@ -11,7 +11,7 @@
 
 ## Structure
 
-- **ClientServerBasic/** – App entry (`ClientServerBasicApp.swift`), `ContentView`, assets, `Info.plist`.
+- **TracMeAlpha/** – App entry (`TracMeAlphaApp.swift`), `ContentView`, assets, `Info.plist`.
 - **Core/Networking/** – `APIClient` (shared URLSession/auth wrapper).
 - **Domain/Models/** – `Invoice`, `User`, `Project` (and related types like `Item`, `Tax`).
 - **Features/** – Feature modules:
