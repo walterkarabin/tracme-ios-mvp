@@ -33,6 +33,7 @@
 		92B3AE282F24253400F56484 /* Exceptions for "Features" folder in "ClientServerBasic" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Analytics/AnalyticsView.swift,
 				Authentication/AuthManagerModel.swift,
 				Authentication/Google/GoogleSignInManager.swift,
 				Authentication/LoginView.swift,
@@ -48,8 +49,14 @@
 				Images/LiveScannerView.swift,
 				Images/OCRService.swift,
 				Images/ProcessDataService.swift,
-				Invoices/InvoiceModel.swift,
+				Invoices/InvoiceCard.swift,
 				Invoices/InvoiceService.swift,
+				Invoices/InvoicesListView.swift,
+				Invoices/InvoiceStore.swift,
+				Invoices/InvoiceView.swift,
+				Invoices/ItemService.swift,
+				Invoices/ItemView.swift,
+				Invoices/ItemViewCard.swift,
 			);
 			target = 92B3ADCE2F241E6C00F56484 /* ClientServerBasic */;
 		};
