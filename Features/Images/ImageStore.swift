@@ -54,8 +54,8 @@ enum ImageAction {
     
     // action to take once invoice is created
     case invoiceCreated(Invoice)
-    
-    
+    case dismissPresentedInvoice
+
     case clear
     case clearError // Useful to dismiss alerts
 }
@@ -64,7 +64,8 @@ enum ImageAction {
 @MainActor
 class ImageStore: ObservableObject {
     @Published private(set) var state = ImageState()
-    
+    @Published var presentedInvoice: Invoice?
+
     private let apiClient: APIClient
     private var invoiceStore: InvoiceStore?
 
@@ -72,7 +73,12 @@ class ImageStore: ObservableObject {
         self.apiClient = apiClient
         self.invoiceStore = invoiceStore
     }
-    
+
+    /// Delegate invoice update to InvoiceStore so InvoiceView edit mode can persist changes.
+    func updateInvoice(_ invoice: Invoice) async {
+        await invoiceStore?.updateInvoice(invoice)
+    }
+
     func dispatch(_ action: ImageAction) {
         switch action {
             
@@ -163,10 +169,6 @@ class ImageStore: ObservableObject {
             Task {
                 do {
                     print("network request: uploading text data")
-                }
-            }
-            Task {
-                do {
                     var invoice = nil as Invoice?
                     if let key = imageKey {
                         // --- SCENARIO A: Key was passed ---
@@ -222,7 +224,11 @@ class ImageStore: ObservableObject {
             invoiceStore?.addInvoice(invoice)
             state.isUploading = false
             state.uploadSuccess = true
-            
+            presentedInvoice = invoice
+
+        case .dismissPresentedInvoice:
+            presentedInvoice = nil
+
         case .clear:
             // Keep the client, reset the state
             state = ImageState()

@@ -9,13 +9,17 @@ import SwiftUI
 import PhotosUI
 import Vision
 
+enum InvoicePresentation { case sheet, popup }
+
 struct ImageView: View {
     @StateObject private var store: ImageStore
+    var invoicePresentation: InvoicePresentation = .sheet
 
-    init(invoiceStore: InvoiceStore? = nil) {
+    init(invoiceStore: InvoiceStore? = nil, invoicePresentation: InvoicePresentation = .sheet) {
         _store = StateObject(wrappedValue: ImageStore(invoiceStore: invoiceStore))
+        self.invoicePresentation = invoicePresentation
     }
-    
+
     // 2. Keep UI-only state (Zoom/Pan/Navigation) local
     @State private var currentScale: CGFloat = 1.0
     @State private var finalScale: CGFloat = 1.0
@@ -26,11 +30,7 @@ struct ImageView: View {
     @State private var showingCamera: Bool = false
     @State private var showingLiveScanner: Bool = false
     @State private var selectedPickerItem: PhotosPickerItem? // Helper for the picker
-    
-//    init(apiClient: APIClient) {
-//        _store = StateObject(wrappedValue: ImageStore(apiClient: apiClient))
-//    }
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -92,22 +92,7 @@ struct ImageView: View {
                 }
                 .padding(.horizontal)
                 
-                // --- RESULTS SCROLLVIEW ---
-                // We use the computed Rows from the store
-                if !store.state.textRows.isEmpty {
-                    ScrollView {
-                        // Flatten rows just for display, or loop through rows
-                        ForEach(store.state.textItems) { item in
-                            Text(item.text)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(item.color.opacity(0.3)) // Use dynamic color
-                                .cornerRadius(8)
-                                .padding(.horizontal)
-                        }
-                    }
-                }
-                Spacer()
+                Spacer(minLength: 16)
             }
             .padding()
             
@@ -126,14 +111,35 @@ struct ImageView: View {
             
             // 2. Sheets
             .fullScreenCover(isPresented: $showingCamera) {
-                // We use a binding to a temp variable, then dispatch on change
                 ARCameraView(image: Binding(
                     get: { store.state.selectedImage },
                     set: { if let img = $0 { store.dispatch(.imageSelected(img)) } }
                 ))
             }
-            .sheet(isPresented: $showingLiveScanner) {
-                // Live scanner logic...
+            .sheet(isPresented: $showingLiveScanner) { }
+            .sheet(item: invoicePresentation == .sheet ? $store.presentedInvoice : .constant(nil)) { inv in
+                InvoiceView(
+                    invoice: inv,
+                    onDismiss: { store.dispatch(.dismissPresentedInvoice) },
+                    onSave: { updated in await store.updateInvoice(updated) }
+                )
+            }
+            .overlay {
+                if invoicePresentation == .popup, let inv = store.presentedInvoice {
+                    Color.black.opacity(0.4).ignoresSafeArea()
+                        .onTapGesture { store.dispatch(.dismissPresentedInvoice) }
+                        .overlay {
+                            InvoiceView(
+                                invoice: inv,
+                                onDismiss: { store.dispatch(.dismissPresentedInvoice) },
+                                onSave: { updated in await store.updateInvoice(updated) }
+                            )
+                            .frame(maxWidth: 400)
+                            .background(Color(.systemBackground))
+                            .cornerRadius(12)
+                            .padding(24)
+                        }
+                }
             }
         }
     }

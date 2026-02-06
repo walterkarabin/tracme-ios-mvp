@@ -18,6 +18,7 @@ class ProcessDataService {
     
     // Process the extracted text data into invoice
     func processTextIntoInvoice(for fileId: String, text: [[String]]) async throws -> Invoice {
+        print("executing the processTextIntoInvoice function")
         // call the APIClient with the extracted text for a specific file
         let endpoint = AppEnvironment.apiHost.appendingPathComponent("/api/files/process/text-extract/\(fileId)")
         let payload = extractedTextRequestDTO(extractedText: text)
@@ -29,7 +30,7 @@ class ProcessDataService {
             responseType: textExtractDTO.self
         )
         
-        print(response)
+        print("Processed text into Invoice:\(response)")
         let createdInvoice: Invoice = response.invoice
         return createdInvoice
     }
