@@ -1,6 +1,6 @@
 //
 //  ImageView.swift
-//  ClientServerBasic
+//  tracme-alpha
 //
 //  Created by Walter Karabin on 2026-01-23.
 //
@@ -119,9 +119,13 @@ struct ImageView: View {
             .sheet(isPresented: $showingLiveScanner) { }
             .sheet(item: invoicePresentation == .sheet ? $store.presentedInvoice : .constant(nil)) { inv in
                 InvoiceView(
-                    invoice: inv,
+                    invoice: Binding(
+                        get: { store.presentedInvoice ?? inv },
+                        set: { store.presentedInvoice = $0 }
+                    ),
                     onDismiss: { store.dispatch(.dismissPresentedInvoice) },
-                    onSave: { updated in await store.updateInvoice(updated) }
+                    onSave: { updated in await store.updateInvoice(updated) },
+                    onItemSaved: { item, invoice in await store.refreshAfterItemSave(item: item, invoice: invoice) }
                 )
             }
             .overlay {
@@ -130,9 +134,13 @@ struct ImageView: View {
                         .onTapGesture { store.dispatch(.dismissPresentedInvoice) }
                         .overlay {
                             InvoiceView(
-                                invoice: inv,
+                                invoice: Binding(
+                                    get: { store.presentedInvoice ?? inv },
+                                    set: { store.presentedInvoice = $0 }
+                                ),
                                 onDismiss: { store.dispatch(.dismissPresentedInvoice) },
-                                onSave: { updated in await store.updateInvoice(updated) }
+                                onSave: { updated in await store.updateInvoice(updated) },
+                                onItemSaved: { item, invoice in await store.refreshAfterItemSave(item: item, invoice: invoice) }
                             )
                             .frame(maxWidth: 400)
                             .background(Color(.systemBackground))

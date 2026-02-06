@@ -1,6 +1,6 @@
 //
 //  ImageStore.swift
-//  ClientServerBasic
+//  tracme-alpha
 //
 //  Created by Walter Karabin on 2026-01-28.
 //
@@ -77,6 +77,13 @@ class ImageStore: ObservableObject {
     /// Delegate invoice update to InvoiceStore so InvoiceView edit mode can persist changes.
     func updateInvoice(_ invoice: Invoice) async {
         await invoiceStore?.updateInvoice(invoice)
+    }
+
+    /// Persists the item via InvoiceStore, refetches the invoice, and updates presentedInvoice so the sheet shows the latest data.
+    func refreshAfterItemSave(item: Item, invoice: Invoice) async {
+        _ = await invoiceStore?.updateItem(item)
+        guard let id = invoice.mongoId, let refetched = await invoiceStore?.refetchInvoice(id: id) else { return }
+        presentedInvoice = refetched
     }
 
     func dispatch(_ action: ImageAction) {

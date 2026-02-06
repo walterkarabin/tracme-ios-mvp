@@ -1,6 +1,6 @@
 //
 //  ARCCameraView.swift
-//  ClientServerBasic
+//  tracme-alpha
 //
 //  Created by Walter Karabin on 2026-01-27.
 //
@@ -48,32 +48,37 @@ struct ARCameraView: View {
                 }
             }
             
-            // 3. UI Controls (Shutter Button & Close)
+            // 3. UI Controls (Shutter Button & Close) — visible in light and dark mode
             VStack {
                 HStack {
                     Spacer()
                     Button {
                         dismiss()
                     } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                            .padding()
+                        Image(systemName: "xmark")
+                            .font(.title2.weight(.semibold))
+                            .foregroundStyle(.white)
+                            .frame(width: 44, height: 44)
+                            .background(Circle().fill(.black.opacity(0.5)))
                     }
+                    .padding()
                 }
                 Spacer()
                 
                 // SHUTTER BUTTON
                 Button(action: {
-                    // Trigger the capture in the Representable
                     shouldCapturePhoto = true
                 }) {
                     ZStack {
+                        // Outer dark ring for contrast on light backgrounds
                         Circle()
-                            .fill(Color.white)
+                            .strokeBorder(.black.opacity(0.5), lineWidth: 4)
+                            .frame(width: 80, height: 80)
+                        Circle()
+                            .fill(.white)
                             .frame(width: 70, height: 70)
                         Circle()
-                            .stroke(Color.white, lineWidth: 4)
+                            .strokeBorder(.white, lineWidth: 4)
                             .frame(width: 80, height: 80)
                     }
                 }
