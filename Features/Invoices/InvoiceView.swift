@@ -1,12 +1,12 @@
 //
 //  InvoiceView.swift
-//  ClientServerBasic
+//  tracme-alpha
 //
 
 import SwiftUI
 
 struct InvoiceView: View {
-    @State private var invoice: Invoice
+    @Binding var invoice: Invoice
     @State private var isEditing = false
     @State private var editName = ""
     @State private var editVendor = ""
@@ -16,11 +16,14 @@ struct InvoiceView: View {
 
     var onDismiss: (() -> Void)?
     var onSave: ((Invoice) async -> Void)?
+    /// Called when an item is saved from ItemView; parent should persist the item and refetch the invoice.
+    var onItemSaved: ((Item, Invoice) async -> Void)?
 
-    init(invoice: Invoice, onDismiss: (() -> Void)? = nil, onSave: ((Invoice) async -> Void)? = nil) {
-        _invoice = State(initialValue: invoice)
+    init(invoice: Binding<Invoice>, onDismiss: (() -> Void)? = nil, onSave: ((Invoice) async -> Void)? = nil, onItemSaved: ((Item, Invoice) async -> Void)? = nil) {
+        _invoice = invoice
         self.onDismiss = onDismiss
         self.onSave = onSave
+        self.onItemSaved = onItemSaved
     }
 
     var body: some View {
@@ -73,8 +76,18 @@ struct InvoiceView: View {
                     item: item,
                     onDismiss: { selectedItem = nil },
                     onSave: { updated in
-                        if let idx = invoice.items.firstIndex(where: { $0.id == updated.id }) {
-                            invoice.items[idx] = updated
+                        guard let idx = invoice.items.firstIndex(where: { $0.id == updated.id }) else {
+                            selectedItem = nil
+                            return
+                        }
+                        var updatedInvoice = invoice
+                        updatedInvoice.items[idx] = updated
+                        invoice = updatedInvoice
+                        if let onItemSaved {
+                            Task {
+                                await onItemSaved(updated, updatedInvoice)
+                            }
+                        } else {
                             Task { await onSave?(invoice) }
                         }
                         selectedItem = nil
@@ -231,12 +244,14 @@ struct InvoiceView: View {
     }
 
     private func applyEdits() {
-        invoice.name = editName.isEmpty ? nil : editName
-        invoice.vendor = editVendor.isEmpty ? nil : editVendor
+        var inv = invoice
+        inv.name = editName.isEmpty ? nil : editName
+        inv.vendor = editVendor.isEmpty ? nil : editVendor
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        invoice.date = formatter.string(from: editDateValue)
-        invoice.totalAmount = Double(editTotalAmount) ?? invoice.totalAmount
+        inv.date = formatter.string(from: editDateValue)
+        inv.totalAmount = Double(editTotalAmount) ?? invoice.totalAmount
+        invoice = inv
     }
 
     private func formatPrice(_ value: Double) -> String {
@@ -282,5 +297,5 @@ private struct InvoiceDetailCard<Content: View>: View {
         ],
         totalAmount: 19.98, taxes: [Tax(taxName: "VAT", amount: 2)], project: nil, date: ISO8601DateFormatter().string(from: Date()), creationDate: "", creator: "", archived: false
     )
-    return InvoiceView(invoice: inv)
+    return InvoiceView(invoice: .constant(inv))
 }

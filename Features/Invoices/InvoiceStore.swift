@@ -1,11 +1,12 @@
 //
 //  InvoiceStore.swift
-//  ClientServerBasic
+//  tracme-alpha
 //
 //  Created by Walter Karabin on 2026-01-23.
 //
 
 import Foundation
+import SwiftUI
 
 @MainActor
 class InvoiceStore: ObservableObject {
@@ -20,6 +21,24 @@ class InvoiceStore: ObservableObject {
 
   func getInvoices() async {
     invoices = await invoiceService.getInvoices()
+  }
+
+  /// Fetches a single invoice by id, replaces it in the list if present, and returns it.
+  func refetchInvoice(id: String) async -> Invoice? {
+    guard let invoice = await invoiceService.getInvoice(id: id) else { return nil }
+    if let index = invoices.firstIndex(where: { $0.mongoId == id }) {
+      invoices[index] = invoice
+    }
+    return invoice
+  }
+
+  /// Binding to an invoice in the list by mongoId (for use in views that need to update when the list changes).
+  func binding(forInvoiceWithMongoId mongoId: String) -> Binding<Invoice>? {
+    guard let index = invoices.firstIndex(where: { $0.mongoId == mongoId }) else { return nil }
+    return Binding(
+      get: { [self] in invoices[index] },
+      set: { [self] newValue in invoices[index] = newValue }
+    )
   }
 
   /// Appends a newly created invoice (e.g. from ImageStore after OCR/upload) to the local list.

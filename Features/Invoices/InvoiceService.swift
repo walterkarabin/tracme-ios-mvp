@@ -31,6 +31,22 @@ class InvoiceService {
     }
   }
 
+  /// GET /api/invoices/:id – fetch a single invoice by id.
+  func getInvoice(id: String) async -> Invoice? {
+    let endpoint = AppEnvironment.apiHost.appendingPathComponent("/api/invoices/\(id)")
+    do {
+      let invoice: Invoice = try await apiClient.request(
+        endpoint: endpoint,
+        method: "GET",
+        responseType: Invoice.self
+      )
+      return invoice
+    } catch {
+      errorMessage = "Error fetching invoice: \(error.localizedDescription)"
+      return nil
+    }
+  }
+
   // MARK: - Update Invoice
     func updateInvoice(_ invoice: Invoice) async -> Invoice? {
         guard let mongoId = invoice.mongoId else {

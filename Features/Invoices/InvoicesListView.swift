@@ -1,6 +1,6 @@
 //
 //  InvoicesListView.swift
-//  ClientServerBasic
+//  tracme-alpha
 //
 
 import SwiftUI
@@ -38,10 +38,16 @@ struct InvoicesListView: View {
                     ForEach(invoiceStore.invoices) { invoice in
                         NavigationLink {
                             InvoiceView(
-                                invoice: invoice,
+                                invoice: invoiceStore.binding(forInvoiceWithMongoId: invoice.mongoId ?? "") ?? .constant(invoice),
                                 onDismiss: nil,
                                 onSave: { updated in
                                     await invoiceStore.updateInvoice(updated)
+                                },
+                                onItemSaved: { item, inv in
+                                    _ = await invoiceStore.updateItem(item)
+                                    if let id = inv.mongoId {
+                                        _ = await invoiceStore.refetchInvoice(id: id)
+                                    }
                                 }
                             )
                         } label: {

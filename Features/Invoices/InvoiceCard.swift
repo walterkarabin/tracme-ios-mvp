@@ -1,6 +1,6 @@
 //
 //  InvoiceCard.swift
-//  ClientServerBasic
+//  tracme-alpha
 //
 //  Styled with a Wealthsimple-inspired look: minimal, warm, amount-forward.
 //
