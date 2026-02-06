@@ -389,7 +389,7 @@ struct Invoice: Codable, Identifiable {
   var files: [String]
   // I think we need items populated
   // avoid having to do another API call to get the items info
-  let items: [Item]
+  var items: [Item]
   var totalAmount: Double
   var taxes: [Tax]
   let project: String?
@@ -472,6 +472,15 @@ extension Invoice {
     let formatter = ISO8601DateFormatter()
     formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
     return formatter.date(from: self.date)
+  }
+
+  /// Parses `creationDate` (API string) to `Date` for filtering and grouping.
+  var creationDateObject: Date? {
+    let formatter = ISO8601DateFormatter()
+    formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+    if let d = formatter.date(from: creationDate) { return d }
+    formatter.formatOptions = [.withInternetDateTime]
+    return formatter.date(from: creationDate)
   }
 
   // This returns the final String you want to show in the UI
