@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		92B3ADEE2F24219700F56484 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 92B3ADED2F24219700F56484 /* KeychainAccess */; };
+		92B3AE262F24253400F56484 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92B3AE0A2F24253400F56484 /* README.md */; };
+		92B3AE302F24295F00F56484 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 92B3AE2F2F24295F00F56484 /* Debug.xcconfig */; };
+		92B3AE322F24298900F56484 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 92B3AE312F24298900F56484 /* Release.xcconfig */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		92B3ADCF2F241E6C00F56484 /* TracMeAlpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TracMeAlpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92B3AE0A2F24253400F56484 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		92B3AE2F2F24295F00F56484 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		92B3AE312F24298900F56484 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		92B3AE272F24253400F56484 /* Exceptions for "Domain" folder in "TracMeAlpha" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/Invoice.swift,
+				Models/Project.swift,
+				Models/User.swift,
+			);
+			target = 92B3ADCE2F241E6C00F56484 /* TracMeAlpha */;
+		};
+		92B3AE342F242A5400F56484 /* Exceptions for "TracMeAlpha" folder in "TracMeAlpha" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 92B3ADCE2F241E6C00F56484 /* TracMeAlpha */;
+		};
+		92B3AE282F24253400F56484 /* Exceptions for "Features" folder in "TracMeAlpha" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Analytics/AnalyticsView.swift,
+				Authentication/AuthManagerModel.swift,
+				Authentication/Google/GoogleSignInManager.swift,
+				Authentication/LoginView.swift,
+				Authentication/RegistrationManager.swift,
+				Authentication/SafariView.swift,
+				Dashboard/DashboardView.swift,
+				Images/ARCCameraView.swift,
+				Images/CameraView.swift,
+				Images/Images.md,
+				Images/ImageService.swift,
+				Images/ImageStore.swift,
+				Images/ImageView.swift,
+				Images/LiveScannerView.swift,
+				Images/OCRService.swift,
+				Images/ProcessDataService.swift,
+				Invoices/InvoiceCard.swift,
+				Invoices/InvoiceService.swift,
+				Invoices/InvoicesListView.swift,
+				Invoices/InvoiceStore.swift,
+				Invoices/InvoiceView.swift,
+				Invoices/ItemService.swift,
+				Invoices/ItemView.swift,
+				Invoices/ItemViewCard.swift,
+			);
+			target = 92B3ADCE2F241E6C00F56484 /* TracMeAlpha */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		92B3ADD12F241E6C00F56484 /* TracMeAlpha */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				92B3AE342F242A5400F56484 /* Exceptions for "TracMeAlpha" folder in "TracMeAlpha" target */,
+			);
+			path = TracMeAlpha;
+			sourceTree = "<group>";
+		};
+		92B3AE0B2F24253400F56484 /* Core */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Core;
+			sourceTree = "<group>";
+		};
+		92B3AE102F24253400F56484 /* Domain */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				92B3AE272F24253400F56484 /* Exceptions for "Domain" folder in "TracMeAlpha" target */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		92B3AE1C2F24253400F56484 /* Features */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				92B3AE282F24253400F56484 /* Exceptions for "Features" folder in "TracMeAlpha" target */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		92B3ADCC2F241E6C00F56484 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92B3ADEE2F24219700F56484 /* KeychainAccess in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		92B3ADC62F241E6C00F56484 = {
+			isa = PBXGroup;
+			children = (
+				92B3AE2F2F24295F00F56484 /* Debug.xcconfig */,
+				92B3AE312F24298900F56484 /* Release.xcconfig */,
+				92B3ADD12F241E6C00F56484 /* TracMeAlpha */,
+				92B3ADD02F241E6C00F56484 /* Products */,
+				92B3AE0B2F24253400F56484 /* Core */,
+				92B3AE102F24253400F56484 /* Domain */,
+				92B3AE1C2F24253400F56484 /* Features */,
+				92B3AE0A2F24253400F56484 /* README.md */,
+			);
+			sourceTree = "<group>";
+		};
+		92B3ADD02F241E6C00F56484 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92B3ADCF2F241E6C00F56484 /* TracMeAlpha.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		92B3ADCE2F241E6C00F56484 /* TracMeAlpha */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92B3ADDA2F241E6D00F56484 /* Build configuration list for PBXNativeTarget "TracMeAlpha" */;
+			buildPhases = (
+				92B3ADCB2F241E6C00F56484 /* Sources */,
+				92B3ADCC2F241E6C00F56484 /* Frameworks */,
+				92B3ADCD2F241E6C00F56484 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				92B3ADD12F241E6C00F56484 /* TracMeAlpha */,
+				92B3AE0B2F24253400F56484 /* Core */,
+			);
+			name = TracMeAlpha;
+			packageProductDependencies = (
+				92B3ADED2F24219700F56484 /* KeychainAccess */,
+			);
+			productName = TracMeAlpha;
+			productReference = 92B3ADCF2F241E6C00F56484 /* TracMeAlpha.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		92B3ADC72F241E6C00F56484 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					92B3ADCE2F241E6C00F56484 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = 92B3ADCA2F241E6C00F56484 /* Build configuration list for PBXProject "TracMeAlpha" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 92B3ADC62F241E6C00F56484;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				92B3ADEC2F24219700F56484 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 92B3ADD02F241E6C00F56484 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92B3ADCE2F241E6C00F56484 /* TracMeAlpha */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		92B3ADCD2F241E6C00F56484 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92B3AE322F24298900F56484 /* Release.xcconfig in Resources */,
+				92B3AE262F24253400F56484 /* README.md in Resources */,
+				92B3AE302F24295F00F56484 /* Debug.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92B3ADCB2F241E6C00F56484 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		92B3ADD82F241E6D00F56484 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DX42Y53C6U;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		92B3ADD92F241E6D00F56484 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = DX42Y53C6U;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		92B3ADDB2F241E6D00F56484 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92B3AE2F2F24295F00F56484 /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DX42Y53C6U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TracMeAlpha/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take pictures";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your Photos to use in the app";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.walterkarabin.tracme-alpha";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		92B3ADDC2F241E6D00F56484 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92B3AE312F24298900F56484 /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DX42Y53C6U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TracMeAlpha/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take pictures";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your Photos to use in the app";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.walterkarabin.tracme-alpha";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92B3ADCA2F241E6C00F56484 /* Build configuration list for PBXProject "TracMeAlpha" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92B3ADD82F241E6D00F56484 /* Debug */,
+				92B3ADD92F241E6D00F56484 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92B3ADDA2F241E6D00F56484 /* Build configuration list for PBXNativeTarget "TracMeAlpha" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92B3ADDB2F241E6D00F56484 /* Debug */,
+				92B3ADDC2F241E6D00F56484 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		92B3ADEC2F24219700F56484 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		92B3ADED2F24219700F56484 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92B3ADEC2F24219700F56484 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 92B3ADC72F241E6C00F56484 /* Project object */;
+}
