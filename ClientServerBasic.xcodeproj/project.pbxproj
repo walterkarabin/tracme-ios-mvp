@@ -14,23 +14,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		92B3ADCF2F241E6C00F56484 /* ClientServerBasic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClientServerBasic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92B3ADCF2F241E6C00F56484 /* TracMeAlpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TracMeAlpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B3AE0A2F24253400F56484 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		92B3AE2F2F24295F00F56484 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		92B3AE312F24298900F56484 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		92B3AE272F24253400F56484 /* Exceptions for "Domain" folder in "ClientServerBasic" target */ = {
+		92B3AE272F24253400F56484 /* Exceptions for "Domain" folder in "TracMeAlpha" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Models/Invoice.swift,
 				Models/Project.swift,
 				Models/User.swift,
 			);
-			target = 92B3ADCE2F241E6C00F56484 /* ClientServerBasic */;
+			target = 92B3ADCE2F241E6C00F56484 /* TracMeAlpha */;
 		};
-		92B3AE282F24253400F56484 /* Exceptions for "Features" folder in "ClientServerBasic" target */ = {
+		92B3AE282F24253400F56484 /* Exceptions for "Features" folder in "TracMeAlpha" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Analytics/AnalyticsView.swift,
@@ -58,24 +58,14 @@
 				Invoices/ItemView.swift,
 				Invoices/ItemViewCard.swift,
 			);
-			target = 92B3ADCE2F241E6C00F56484 /* ClientServerBasic */;
-		};
-		92B3AE342F242A5400F56484 /* Exceptions for "ClientServerBasic" folder in "ClientServerBasic" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 92B3ADCE2F241E6C00F56484 /* ClientServerBasic */;
+			target = 92B3ADCE2F241E6C00F56484 /* TracMeAlpha */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		92B3ADD12F241E6C00F56484 /* ClientServerBasic */ = {
+		92B3ADD12F241E6C00F56484 /* TracMeAlpha */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				92B3AE342F242A5400F56484 /* Exceptions for "ClientServerBasic" folder in "ClientServerBasic" target */,
-			);
-			path = ClientServerBasic;
+			path = TracMeAlpha;
 			sourceTree = "<group>";
 		};
 		92B3AE0B2F24253400F56484 /* Core */ = {
@@ -86,7 +76,7 @@
 		92B3AE102F24253400F56484 /* Domain */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				92B3AE272F24253400F56484 /* Exceptions for "Domain" folder in "ClientServerBasic" target */,
+				92B3AE272F24253400F56484 /* Exceptions for "Domain" folder in "TracMeAlpha" target */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -94,7 +84,7 @@
 		92B3AE1C2F24253400F56484 /* Features */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				92B3AE282F24253400F56484 /* Exceptions for "Features" folder in "ClientServerBasic" target */,
+				92B3AE282F24253400F56484 /* Exceptions for "Features" folder in "TracMeAlpha" target */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -118,7 +108,7 @@
 			children = (
 				92B3AE2F2F24295F00F56484 /* Debug.xcconfig */,
 				92B3AE312F24298900F56484 /* Release.xcconfig */,
-				92B3ADD12F241E6C00F56484 /* ClientServerBasic */,
+				92B3ADD12F241E6C00F56484 /* TracMeAlpha */,
 				92B3ADD02F241E6C00F56484 /* Products */,
 				92B3AE0B2F24253400F56484 /* Core */,
 				92B3AE102F24253400F56484 /* Domain */,
@@ -130,7 +120,7 @@
 		92B3ADD02F241E6C00F56484 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				92B3ADCF2F241E6C00F56484 /* ClientServerBasic.app */,
+				92B3ADCF2F241E6C00F56484 /* TracMeAlpha.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,9 +128,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		92B3ADCE2F241E6C00F56484 /* ClientServerBasic */ = {
+		92B3ADCE2F241E6C00F56484 /* TracMeAlpha */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 92B3ADDA2F241E6D00F56484 /* Build configuration list for PBXNativeTarget "ClientServerBasic" */;
+			buildConfigurationList = 92B3ADDA2F241E6D00F56484 /* Build configuration list for PBXNativeTarget "TracMeAlpha" */;
 			buildPhases = (
 				92B3ADCB2F241E6C00F56484 /* Sources */,
 				92B3ADCC2F241E6C00F56484 /* Frameworks */,
@@ -151,15 +141,15 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				92B3ADD12F241E6C00F56484 /* ClientServerBasic */,
+				92B3ADD12F241E6C00F56484 /* TracMeAlpha */,
 				92B3AE0B2F24253400F56484 /* Core */,
 			);
-			name = ClientServerBasic;
+			name = TracMeAlpha;
 			packageProductDependencies = (
 				92B3ADED2F24219700F56484 /* KeychainAccess */,
 			);
-			productName = ClientServerBasic;
-			productReference = 92B3ADCF2F241E6C00F56484 /* ClientServerBasic.app */;
+			productName = TracMeAlpha;
+			productReference = 92B3ADCF2F241E6C00F56484 /* TracMeAlpha.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -194,7 +184,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				92B3ADCE2F241E6C00F56484 /* ClientServerBasic */,
+				92B3ADCE2F241E6C00F56484 /* TracMeAlpha */,
 			);
 		};
 /* End PBXProject section */
@@ -355,7 +345,7 @@
 				DEVELOPMENT_TEAM = DX42Y53C6U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ClientServerBasic/Info.plist;
+				INFOPLIST_FILE = TracMeAlpha/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take pictures";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your Photos to use in the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -368,7 +358,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.walterkarabin.ClientServerBasic;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.walterkarabin.tracme-alpha";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -387,7 +377,7 @@
 				DEVELOPMENT_TEAM = DX42Y53C6U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ClientServerBasic/Info.plist;
+				INFOPLIST_FILE = TracMeAlpha/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take pictures";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your Photos to use in the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -400,7 +390,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.walterkarabin.ClientServerBasic;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.walterkarabin.tracme-alpha";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -420,7 +410,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		92B3ADDA2F241E6D00F56484 /* Build configuration list for PBXNativeTarget "ClientServerBasic" */ = {
+		92B3ADDA2F241E6D00F56484 /* Build configuration list for PBXNativeTarget "TracMeAlpha" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92B3ADDB2F241E6D00F56484 /* Debug */,
