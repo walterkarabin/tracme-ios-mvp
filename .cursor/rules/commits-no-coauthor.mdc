@@ -1,0 +1,14 @@
+---
+description: Never add Co-authored-by Cursor to commit messages
+alwaysApply: true
+---
+
+# Commit Messages: No Co-authored-by
+
+When creating or suggesting git commits in this project:
+
+- **Never** add `Co-authored-by: Cursor <cursoragent@cursor.com>` (or any Cursor co-author line) to commit messages.
+- Use only the subject line (and optional body) for the commit. Example: `git commit -m "Add feature X."`
+- Do not append trailers like `Co-authored-by` to commit messages.
+
+This keeps commit history attribution clean and avoids needing to rewrite history to remove these lines.
