@@ -32,23 +32,31 @@ class InvoiceService {
   }
 
   // MARK: - Update Invoice
-  func updateInvoice(_ invoice: Invoice) async -> Invoice? {
-    print("InvoiceService: Updating invoice with ID \(invoice.id).")
-    let endpoint = AppEnvironment.apiHost.appendingPathComponent("/api/invoices/\(invoice.id)")
-    do {
-      let body = try JSONEncoder().encode(invoice)
-      let updatedInvoice: Invoice = try await apiClient.request(
-        endpoint: endpoint,
-        method: "PUT",
-        body: body,
-        responseType: Invoice.self
-      )
-      return updatedInvoice
-    } catch {
-      errorMessage = "Error updating invoice: \(error.localizedDescription)"
-      return nil
+    func updateInvoice(_ invoice: Invoice) async -> Invoice? {
+        guard let mongoId = invoice.mongoId else {
+            errorMessage = "Invoice has no mongoId; cannot update."
+            return nil
+        }
+        print("InvoiceService: Updating invoice with ID \(mongoId).")
+        let endpoint = AppEnvironment.apiHost.appendingPathComponent("/api/invoices/\(mongoId)")
+        do {
+            let body = try JSONEncoder().encode(invoice)
+            let response: InvoiceDTO = try await apiClient.request(
+                endpoint: endpoint,
+                method: "PUT",
+                body: body,
+                responseType: InvoiceDTO.self
+            )
+            
+            print("updateInvoice: \(response)")
+            
+            let updatedInvoice: Invoice = response.invoice
+            return updatedInvoice
+        } catch {
+            errorMessage = "Error updating invoice: \(error.localizedDescription)"
+            return nil
+        }
     }
-  }
     
     func createInvoice(_ invoice: Invoice) async -> Invoice? {
         print("InvoiceService: Creating invoice.")
@@ -68,4 +76,10 @@ class InvoiceService {
             return nil
         }
     }
+}
+
+struct InvoiceDTO: Codable {
+    var invoice: Invoice
+    var message: String
+    var error: Bool?
 }
