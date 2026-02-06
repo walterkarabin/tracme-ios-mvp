@@ -14,6 +14,8 @@ struct DashboardView: View {
         NavigationStack {
             List {
                 NavigationLink("Image OCR", destination: ImageView(invoiceStore: invoiceStore))
+                NavigationLink("Invoices", destination: InvoicesListView())
+                NavigationLink("Analytics", destination: AnalyticsView())
             }
         }
     }
@@ -21,5 +23,5 @@ struct DashboardView: View {
 
 #Preview {
     DashboardView()
-        .environmentObject(InvoiceStore(invoiceService: InvoiceService(authManager: AuthManager())))
+        .environmentObject(InvoiceStore(invoiceService: InvoiceService(authManager: AuthManager()), itemService: ItemService(authManager: AuthManager())))
 }

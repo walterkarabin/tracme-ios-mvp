@@ -15,16 +15,13 @@ struct ClientServerBasicApp: App {
     @State private var showingModal = false  // State to control modal visibility
     
     private var invoiceService: InvoiceService
-    
+    private var itemService: ItemService
+
     init() {
-        // Observe the UserDidLogout notification
         let sharedAuthManager = AuthManager()
-        
-        // B. Initialize the StateObject manually using the raw instance
-        // The underscore (_authManager) accesses the wrapper itself, not the value inside.
         self._authManager = StateObject(wrappedValue: sharedAuthManager)
-        // C. Pass that SAME instance to the service
         self.invoiceService = InvoiceService(authManager: sharedAuthManager)
+        self.itemService = ItemService(authManager: sharedAuthManager)
         
         // D. Setup Development Mode
         // developmentMode = Bundle.main.infoDictionary?["DevelopmentMode"] as? Bool ?? false
@@ -37,15 +34,16 @@ struct ClientServerBasicApp: App {
             object: nil,
             queue: .main
         ) { [weak sharedAuthManager] _ in
-            sharedAuthManager?.isAuthenticated = true
+            sharedAuthManager?.isAuthenticated = false
         }
-        if authManager.isAuthenticated {
-            print("main")
-        } else if developmentMode {
-            print("dev mode")
-        } else {
-            print("login")
-        }
+//        if sharedAuthManager.isAuthenticated {
+//            print("main")
+//        } else if developmentMode {
+//            print("dev mode")
+//        } else {
+//            print(authManager.isAuthenticated)
+//            print("login")
+//        }
     }
     
     var body: some Scene {
@@ -59,17 +57,13 @@ struct ClientServerBasicApp: App {
                     // (like LibraryView) can access it later if needed (e.g., for logout).
                         .environmentObject(authManager)
                         .environmentObject(
-                            InvoiceStore(invoiceService: invoiceService)
+                            InvoiceStore(invoiceService: invoiceService, itemService: itemService)
                         )
                 } else if developmentMode {
-                    // If in development mode, bypass login for easier testing
-                    //                    Button("Show Modal") {
-                    //                        showingModal.toggle()  // Toggle the state to show/hide the modal
-                    //                    }
                     DashboardView()
                         .environmentObject(authManager)
                         .environmentObject(
-                            InvoiceStore(invoiceService: invoiceService)
+                            InvoiceStore(invoiceService: invoiceService, itemService: itemService)
                         )
                     // .sheet(isPresented: $showingModal) {
                     //   InvoiceView(
